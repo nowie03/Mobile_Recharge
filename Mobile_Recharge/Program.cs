@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Mobile_Recharge.Areas.Identity.DAL;
 using Mobile_Recharge.Areas.Identity.Data;
 using Mobile_Recharge.Data;
 namespace Mobile_Recharge
@@ -19,6 +20,8 @@ namespace Mobile_Recharge
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddScoped<UserHelper, UserHelper>();
 
             var app = builder.Build();
 
