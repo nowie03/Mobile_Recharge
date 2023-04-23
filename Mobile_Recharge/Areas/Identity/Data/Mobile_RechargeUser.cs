@@ -11,9 +11,7 @@ namespace Mobile_Recharge.Areas.Identity.Data;
 // Add profile data for application users by adding properties to the Mobile_RechargeUser class
 public class Mobile_RechargeUser : IdentityUser
 {
-    
-
-
+  
     [Required]
     public int ServiceProviderId { get; set; }
 

@@ -14,6 +14,12 @@ public class Mobile_RechargeContext : IdentityDbContext<Mobile_RechargeUser>
     public DbSet<Mobile_RechargeUser>users{ get; set; }
     public DbSet<ServiceProviderModel> serviceProviders { get; set; }
 
+    public DbSet<PlansModel> plans { get; set; }
+
+    public DbSet<UserPlanHistory> userPlanHistory { get; set; }
+
+
+
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

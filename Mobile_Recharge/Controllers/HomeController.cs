@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Mobile_Recharge.Models;
 using System.Diagnostics;
 
@@ -18,6 +19,7 @@ namespace Mobile_Recharge.Controllers
             return View();
         }
 
+        [Authorize(Roles="admin")]
         public IActionResult Privacy()
         {
             return View();

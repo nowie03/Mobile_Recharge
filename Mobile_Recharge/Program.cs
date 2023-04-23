@@ -14,8 +14,8 @@ namespace Mobile_Recharge
                                     builder.Services.AddDbContext<Mobile_RechargeContext>(options =>
                 options.UseSqlServer(connectionString));
 
-                                                builder.Services.AddDefaultIdentity<Mobile_RechargeUser>(options => options.SignIn.RequireConfirmedAccount = false)
-                .AddEntityFrameworkStores<Mobile_RechargeContext>();
+                                                builder.Services.AddDefaultIdentity<Mobile_RechargeUser>(options => options.SignIn.RequireConfirmedAccount = false).AddRoles<IdentityRole>().
+                AddEntityFrameworkStores<Mobile_RechargeContext>();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();

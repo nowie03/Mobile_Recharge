@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Mobile_Recharge.Data;
 
@@ -11,9 +12,10 @@ using Mobile_Recharge.Data;
 namespace Mobile_Recharge.Migrations
 {
     [DbContext(typeof(Mobile_RechargeContext))]
-    partial class Mobile_RechargeContextModelSnapshot : ModelSnapshot
+    [Migration("20230422102259_added-tables")]
+    partial class addedtables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -307,6 +309,9 @@ namespace Mobile_Recharge.Migrations
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PlanId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("PurchaseDate")
                         .HasColumnType("datetime2");

@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Mobile_Recharge.Areas.Identity.Data.UserPlanHistory>
+
+@{
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.user.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.plans.serviceProvider.ServiceProviderName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.plans.PlanName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.plans.PlanDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PurchaseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.plans.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.plans.Validity)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.user.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.plans.serviceProvider.ServiceProviderName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.plans.PlanName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.plans.PlanDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PurchaseDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.plans.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.plans.Validity)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
