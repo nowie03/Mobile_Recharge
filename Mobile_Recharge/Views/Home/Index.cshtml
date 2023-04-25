@@ -1,8 +1,42 @@
 ﻿@{
+    //user home page
     ViewData["Title"] = "Home Page";
 }
+@model Mobile_Recharge.Areas.Identity.Data.UserHomeModel
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+    @{ if(Model!=null){
+        <div class="card">
+            <div class="card-header">
+               Active Plan
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@Model.ActivePlan.plans.PlanName</h5>
+                <p class="card-text">@Model.ActivePlan.plans.PlanDescription</p>
+                <p class="card-text">Ends On :@Model.ActivePlan.StartDate.Add(new TimeSpan(@Model.ActivePlan.plans.Validity*24,0,0))</p>
+                <a asp-action="Payment" asp-controller="Home" asp-route-planId=@Model.ActivePlan.plans.PlanId class="btn btn-primary">Continue With This Plan</a>
+            </div>
+        </div>
+
+        foreach(var plan in Model.PlansForUser)
+        {
+            <div class="card mt-2">
+                <div class="card-header">
+                    @plan.PlanName
+                </div>
+                <div class="card-body">
+      
+                    <p class="card-text">@plan.PlanDescription</p>
+                    <p class="card-text">Validity : @plan.Validity Days</p>
+                    <p class="card-text">Data: @plan.Data GB</p>
+                    <a asp-action="Payment" asp-controller="Home" asp-route-planId=@plan.PlanId class="btn btn-primary">@plan.Price rs</a>
+                </div>
+            </div>
+        }
+    }
+
+
+        
+    
+
+   }

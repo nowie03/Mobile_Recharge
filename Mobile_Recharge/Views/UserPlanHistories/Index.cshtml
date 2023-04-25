@@ -33,6 +33,18 @@
             <th>
                 @Html.DisplayNameFor(model => model.PhoneNumber)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.plans.PlanName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.plans.Data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.plans.Validity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.plans.IsRoaming)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -60,11 +72,18 @@
             <td>
                 @Html.DisplayFor(modelItem => item.PhoneNumber)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.PlanHistoryId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PlanHistoryId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.PlanHistoryId">Delete</a>
-            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.plans.PlanName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.plans.Data)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.plans.Validity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.plans.IsRoaming)
+                </td>
         </tr>
 }
     </tbody>

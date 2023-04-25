@@ -27,6 +27,7 @@ namespace Mobile_Recharge.Controllers
         public async Task<IActionResult> Index()
         {
             string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
             var userPlanHistory =await _userHelper.GetUserPlans(userId);
 
             return View(userPlanHistory);

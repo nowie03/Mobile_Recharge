@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Mobile_Recharge.Areas.Identity.Data;
 using Mobile_Recharge.Data;
 
@@ -12,13 +13,21 @@ namespace Mobile_Recharge.Areas.Identity.DAL
 
         public async Task<List<UserPlanHistory>> GetUserPlans(string id)
         {
-            return  _context.userPlanHistory.Where(row=>row.user.Id==id).ToList();
-       
+            return  _context.userPlanHistory.Include(up=>up.plans).Where(row => row.user.Id == id).ToList();
+
         }
 
-        public async Task<List<PlansModel>>GetPlans(int serviceProviderId)
+        public async Task<List<PlansModel>>GetPlans(string userId)
         {
-            return _context.plans.Where(row => row.ServiceProviderId == serviceProviderId).ToList();
+            //get user corresponding to the userId
+            Mobile_RechargeUser user=_context.Users.FirstOrDefault(user=>user.Id.Equals(userId));
+
+            //get plans of service provider of user
+            return _context.plans.Where(row => row.ServiceProviderId == user.ServiceProviderId).ToList();
         }
+
+        
+
+        
     }
 }
