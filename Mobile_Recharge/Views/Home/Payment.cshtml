@@ -1,6 +1,49 @@
 ﻿@{
     ViewData["Title"] = "Privacy Policy";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>@ViewData["planId"]</p>
+
+@model List<Mobile_Recharge.Areas.Identity.Data.PlansModel>    
+ 
+<div class="d-flex justify-content-center" >
+    @foreach(var item in Model) {
+        <div class="card" style="min-height:500px;min-width:500px;">
+    <div class="card-header" >
+        @item.PlanName
+    </div>
+    <div class="card-body">
+            <p class="card-text"> @item.PlanDescription</p>
+            <p class="card-text"> @item.Validity Days</p>
+        <p class="card-text">@item.Price rs</p>
+        @*<a asp-action="Payment" asp-controller="Home" asp-route-planId=@Model.ActivePlan.plans.PlanId class="btn btn-primary">Continue With This Plan</a>*@
+    </div>
+    <div class="card-footer">
+                <a asp-action="ProcessPay" asp-controller="Home" asp-route-planId=@item.PlanId class="btn btn-success">$pay</a>
+                <a class="btn btn-danger" asp-action="Index" asp-controller="Home"> Cancel</a>
+    </div>
+</div>
+}
+</div>
+
+@*<style>
+    .card {
+        width: calc(33.33% - 20px);
+        margin: 10px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        overflow: hidden;
+        min-height:400px;
+    }
+
+    .card-body {
+        padding: 10px;
+        text-align: center;
+
+    }
+
+    .card-text {
+        font-size: 0.9rem;
+        color: #888;
+        margin-bottom: 10px;
+    }</style>
+*@

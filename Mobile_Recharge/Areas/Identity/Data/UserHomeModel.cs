@@ -4,6 +4,9 @@
     {
         public List<PlansModel> PlansForUser { get; set; }
 
-        public UserPlanHistory ActivePlan { get;set; }
+        public UserPlanHistory ActivePlan { get; set; }
+
+        public List<UserPlanHistory> PlanHistory { get; set; }
     }
+    
 }
